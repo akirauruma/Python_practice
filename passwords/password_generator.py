@@ -8,7 +8,7 @@ symbols = "~!@#$%^&*()_+<>?:`'/.,[]{}-="
 string = lower_case + upper_case + digits + symbols
 length = 16
 
-# Попробуем прочитать текущее значение user_id из файла
+# строк для добавления новым значениям id:
 try:
     with open("passwords.txt", "r") as file:
         lines = file.readlines()
@@ -25,8 +25,8 @@ def generate_password():
     return "".join(random.sample(string, length))
 
 
-# Получите имя пользователя от пользователя
-user_name = input("Введите имя пользователя: ")
+# ввод логина
+user_name = input("Login: ")
 website = input("Website name: ")
 
 # Генерация пароля
@@ -34,7 +34,7 @@ password = generate_password()
 
 hashed_password = generate_password()
 
-# Откройте файл в режиме добавления и запишите в него user_id, имя пользователя и пароль в формате таблицы
+# добавение новых значений в файл
 with open("passwords.txt", "a") as file:
     file.write(f'ID:{user_id_counter}.\tLogin: {user_name}\tWebsite: {website}\t Password: {password}\n')
 
